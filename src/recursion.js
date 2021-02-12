@@ -91,7 +91,26 @@ var arraySum = function(array) {
 };
 
 // 4. Check if a number is even.
+//I: integer
+//O: boolean
+//C: don't use modulo, use recursion, one argument
 var isEven = function(n) {
+    //Store result
+    var result = false;
+
+    if (n < 0) {
+        n = n * -1;
+    }
+
+    //Base case + return result;
+    if (n - 2 === 0) {
+        return true;
+    } else if (n - 2 === -1) {
+        return false;
+    }
+
+    //Recursive case
+    return isEven(n-2);
 };
 
 // 5. Sum all integers below a given integer.

@@ -173,7 +173,6 @@ var exponent = function(base, exp) {
       result = base * exponent(base, exp-1) 
     } else if (exp < 0) {
       result = result * (1 / base * exponent(base, exp+1));
-      console.log(result);
     }
     
     result = result.toFixed(5);
@@ -227,7 +226,29 @@ var reverse = function(string) {
 };
 
 // 10. Write a function that determines if a string is a palindrome.
+//I: string
+//O: boolean
+//C: use recursion, one argument, ignore spaces/capital letters
+//E: none
 var palindrome = function(string) {
+    // [a, b, c, b, a] 
+
+    if (string.length === 1) {
+        return true; 
+    }
+    if (string.length > 1) {
+        string = string.toLowerCase();
+        string = string.split(' ').join('');
+        
+        var n = string.length; 
+
+        if (string[0] === string[n - 1]) {
+            var newString = string.slice(1, n-1);
+            return palindrome(newString);
+        } else {
+            return false;
+        }
+    }
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the

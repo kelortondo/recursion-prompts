@@ -6,7 +6,32 @@
 // denoted by n!, is the product of all positive integers less than or equal to n.
 // Example: 5! = 5 x 4 x 3 x 2 x 1 = 120
 // factorial(5); // 120
+
+//Input: non-negative integer
+//Output: product of all positive integers less than or equal to n
+//Constraints: must use recursion
+//Edge cases: ?
 var factorial = function(n) {
+    if (n < 0) {
+        return null;
+    }
+    
+    var result = 1;
+
+    //Base case
+    if (n === 0) {
+        return result;
+    }
+
+    //Recursive case
+    result = result * n;
+
+    if (n > 0) {
+        result = result * factorial(n-1);
+    } 
+
+    //return value
+    return result;
 };
 
 // 2. Compute the sum of an array of integers.

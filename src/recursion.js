@@ -69,24 +69,20 @@ var sum = function(array) {
 //C: use recursion, don't mutate input array, one argument
 //E: return 0 for empty array
 var arraySum = function(array) {
-    //Store result
     var result = 0;
 
     if (array.length === 0) {
         return result;
     }
 
-    //Base case
     if (typeof(array) === 'number') {
         return result += array;
     }
 
-    //Recursive case
     array.forEach(function(element) {
         result = result + arraySum(element);
     });
 
-    //Return result
     return result;
 };
 
@@ -95,28 +91,37 @@ var arraySum = function(array) {
 //O: boolean
 //C: don't use modulo, use recursion, one argument
 var isEven = function(n) {
-    //Store result
-    var result = false;
-
     if (n < 0) {
         n = n * -1;
     }
 
-    //Base case + return result;
     if (n - 2 === 0) {
         return true;
     } else if (n - 2 === -1) {
         return false;
     }
 
-    //Recursive case
     return isEven(n-2);
 };
 
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
+//I: Integer
+//O: Integer (sum of all integers below a given integer)
+//C: Use recursion, one argument
 var sumBelow = function(n) {
+    var result = 0;
+
+    if (n > 1) {
+        result += n-1;
+        result = result + sumBelow(n - 1);
+    } else if (n < -1) {
+        result += n + 1;
+        result = result + sumBelow(n+1);
+    }
+
+    return result;
 };
 
 // 6. Get the integers within a range (x, y).

@@ -126,7 +126,31 @@ var sumBelow = function(n) {
 
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
+//I: Two integers
+//O: An array of integers between the input integers, non-inclusive
+//C: Two arguments, use recursion
+//E: Return empty array if no integers in range, accept negative integers, accept 
+// starting integer that's larger than ending
 var range = function(x, y) {
+    var result = [];
+    
+    if (y > x) {
+        if (x === y - 1) {
+            return result;
+        } else if (x < y - 1) {
+            result = result.concat(x+1);
+            result = result.concat(range(x+1, y));
+        }   
+    } else if (x > y) {
+        if (x === y + 1) {
+            return result;
+        } else if (x > y + 1) {
+            result = result.concat(x-1);
+            result = result.concat(range(x-1, y));
+        } 
+    }
+ 
+    return result;
 };
 
 // 7. Compute the exponent of a number.

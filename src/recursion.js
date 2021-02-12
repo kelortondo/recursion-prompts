@@ -185,7 +185,22 @@ var exponent = function(base, exp) {
 // powerOfTwo(1); // true
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
+//I: Integer
+//O: Boolean
+//C: One argument, use recursion
+//E: to the power of 0 equals 1
 var powerOfTwo = function(n) {
+    if (n === 1) {
+        return true;
+    }
+
+    if (n / 2 === 1) {
+        return true;
+    } else if (n / 2 < 1) {
+        return false;
+    } else if (n / 2 > 1) {
+        return powerOfTwo(n/2);
+    }
 };
 
 // 9. Write a function that reverses a string.

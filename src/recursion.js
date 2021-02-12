@@ -239,7 +239,7 @@ var palindrome = function(string) {
     if (string.length > 1) {
         string = string.toLowerCase();
         string = string.split(' ').join('');
-        
+
         var n = string.length; 
 
         if (string[0] === string[n - 1]) {
@@ -329,7 +329,28 @@ var countKeysInObj = function(obj, key) {
 // var obj = {'e':{'x':'y'},'t':{'r':{'e':'r'},'p':{'y':'r'}},'y':'e'};
 // countValuesInObj(obj, 'r') // 2
 // countValuesInObj(obj, 'e') // 1
+//I: object, value of interest
+//O: Integer
+//C: Two arguments, call itself
+//E: none
 var countValuesInObj = function(obj, value) {
+    //Store results
+    var valueCount = 0;
+
+    for (key in obj) {
+        //Base Case
+        if (!(typeof(obj[key]) === 'object')) {
+            if (obj[key] === value) {
+              return valueCount = 1; 
+            } else {
+              return valueCount;
+            }
+        } else {
+            valueCount = valueCount + countValuesInObj(obj[key], value);
+        }
+    }
+
+    return valueCount;
 };
 
 // 24. Find all keys in an object (and nested objects) by a provided name and rename
